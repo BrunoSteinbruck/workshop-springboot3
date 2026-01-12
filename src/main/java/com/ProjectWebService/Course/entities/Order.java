@@ -100,9 +100,16 @@ public class Order implements Serializable {
 		this.payment = payment;
 	}
 
-
 	public Set<OrderItem> getItems() {
 		return items;
+	}
+	
+	public Double getTotal() {
+		double sum = 0;
+		for (OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
 	}
 	
 	@Override
